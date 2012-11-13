@@ -17,7 +17,6 @@ $ mkdir output
 ```
 
 Put your base yml file in datas directory.<br/>
->>>>>>> development
 <br/>
 Run the program with that command :
 ```bash
