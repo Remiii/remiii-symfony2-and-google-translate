@@ -8,6 +8,8 @@ $ php composer.phar install
 ```
 App creating your sf2 translations files via google translate API.
 <br/>
+Create a datas directory and an output directory.
+Put your base messages.[yourlanguage].yml file in datas directory.<br/>
 Create a datas directory and an output directory :</br>
 ```bash
 $ mkdir datas
