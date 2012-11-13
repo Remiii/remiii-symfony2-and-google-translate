@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'app.php';
+
+use Symfony\Component\Console\Application;
+
+$app = new Application('api translator', '0.1 ');
+$app->add(new ApiTranslator\TranslateCommand());
+$app->run();
