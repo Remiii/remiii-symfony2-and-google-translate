@@ -5,7 +5,7 @@ symfony2-and-google-translate
 App creating your sf2 translations files via google translate API.
 <br/>
 Create a datas directory and an output directory
-Put your base yml file in datas directory.<br/>
+Put your base messages.[yourlanguage].yml file in datas directory.<br/>
 <br/>
 Run the program with that command : php app/console "es, en, it".
 
