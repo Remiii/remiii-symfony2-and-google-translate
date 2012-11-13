@@ -1,7 +1,7 @@
 symfony2-and-google-translate
 =============================
 
-<h2>>symfony2-and-google-translate :</h2>
+<h2>symfony2-and-google-translate :</h2>
 App creating your sf2 translations files via google translate API.
 <br/>
 Create a datas directory and an output directory
