@@ -8,6 +8,7 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(
     array(  
         "Symfony"=> __DIR__."/vendor/symfony/symfony/src",
+        "ApiTranslator" => __DIR__."/src"
     )
 );
 
