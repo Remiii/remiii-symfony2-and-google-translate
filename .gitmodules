@@ -10,6 +10,3 @@
 [submodule "vendor/symfony/symfony/src/Symfony/Component/Console"]
 	path = vendor/symfony/symfony/src/Symfony/Component/Console
 	url = https://github.com/symfony/Console.git
-[submodule "vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle"]
-	path = vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle
-	url = https://github.com/symfony/FrameworkBundle.git
