@@ -1,5 +1,5 @@
-output
-datas
+output/*
+datas/*
 *.swo
 *.swn
 *.swp
