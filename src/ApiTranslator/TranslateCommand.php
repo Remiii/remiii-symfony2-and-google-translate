@@ -42,7 +42,7 @@ class TranslateCommand extends Command
             $tab = explode(".", $path);
             array_pop($tab);
             $key = end($tab);
-            $translator = new Translator(trim($key), __DIR__.'/../../vendor/Remiii/google-translate/bin/t' ) ;
+            $translator = new Translator(trim($key), __DIR__.'/../../vendor/remiii/google-translate/bin/t' ) ;
 
             foreach($languages as $lang) {
                 $lang = trim($lang);
