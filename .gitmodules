@@ -1,6 +1,6 @@
-[submodule "vendor/shvets/google-translate"]
-	path = vendor/shvets/google-translate
-	url = git://github.com/shvets/google-translate.git
+[submodule "vendor/Remiii/google-translate"]
+	path = vendor/Remiii/google-translate
+	url = https://github.com/Remiii/google-translate.git
 [submodule "vendor/symfony/class-loader"]
 	path = vendor/symfony/class-loader
 	url = https://github.com/symfony/ClassLoader.git
@@ -10,3 +10,6 @@
 [submodule "vendor/symfony/symfony/src/Symfony/Component/Console"]
 	path = vendor/symfony/symfony/src/Symfony/Component/Console
 	url = https://github.com/symfony/Console.git
+[submodule "vendor/symfony/symfony/src/Symfony/Component/Finder"]
+	path = vendor/symfony/symfony/src/Symfony/Component/Finder
+	url = https://github.com/symfony/Finder.git

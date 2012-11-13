@@ -20,6 +20,6 @@ class Translator
 
     public function translate( $lang, $message )
     {
-        return exec("$this->file_Translator $this->key:$lang $message" ) ;
+        return exec("$this->file_Translator $this->key:$lang ".utf8_decode($message) ) ;
     }
 }

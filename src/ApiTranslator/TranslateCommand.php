@@ -2,7 +2,10 @@
 
 namespace ApiTranslator;
 use ApiTranslator\Translator\Translator;
+
 use Symfony\Component\Yaml\Yaml;
+
+use Symfony\Component\Finder\Finder;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -28,23 +31,32 @@ class TranslateCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $languages=  explode( "," , $input->getArgument('languages') );
+        $languages=  explode( "," , $input->getArgument('languages') ) ;
         
-        $file_toTranslate = Yaml::parse(__DIR__."/../../datas/messages.fr.yml") ;
+        $finder = new Finder() ;
+        $finder->files()->in(__DIR__."/../../datas/") ;
 
-        $translator = new Translator("fr", __DIR__.'/../../vendor/shvets/google-translate/bin/t' ) ;
+        foreach ( $finder as $file ) { 
+            $path = $file->getRealpath();
+            $file_toTranslate = Yaml::parse($path) ;
+            $tab = explode(".", $path);
+            array_pop($tab);
+            $key = end($tab);
+            $translator = new Translator(trim($key), __DIR__.'/../../vendor/Remiii/google-translate/bin/t' ) ;
 
-        foreach($languages as $lang) {
-            $lang = trim($lang);
-            $text = '';
-            $resource = fopen(__DIR__."/../../output/messages.$lang.yml", "w+");
-            foreach($file_toTranslate as $key => $val) {
-                $traduction = $translator->translate( $lang , $val ) ;
-                $text .= "$key: $traduction\n" ;
-            }
-            fwrite($resource, $text);
-            fclose($resource);
+            foreach($languages as $lang) {
+                $lang = trim($lang);
+                $text = '';
+                $resource = fopen(__DIR__."/../../output/messages.$lang.yml", "w+");
+                foreach($file_toTranslate as $key => $val) {
+                    $traduction = $translator->translate( $lang , utf8_encode($val) ) ;
+                    $text .= "$key: $traduction\n" ;
+                }
+                fwrite($resource, $text);
+                fclose($resource);
+                }
             }
         }
+
 
 }
