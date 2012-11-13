@@ -1,15 +1,15 @@
 [submodule "vendor/Remiii/google-translate"]
-	path = vendor/Remiii/google-translate
-	url = https://github.com/Remiii/google-translate.git
-[submodule "vendor/symfony/class-loader"]
-	path = vendor/symfony/class-loader
-	url = https://github.com/symfony/ClassLoader.git
+    path = vendor/Remiii/google-translate
+    url = https://github.com/Remiii/google-translate.git
 [submodule "vendor/symfony/symfony/src/Symfony/Component/Yaml"]
-	path = vendor/symfony/symfony/src/Symfony/Component/Yaml
-	url = https://github.com/symfony/Yaml.git
+    path = vendor/symfony/symfony/src/Symfony/Component/Yaml
+    url = https://github.com/symfony/Yaml.git
 [submodule "vendor/symfony/symfony/src/Symfony/Component/Console"]
-	path = vendor/symfony/symfony/src/Symfony/Component/Console
-	url = https://github.com/symfony/Console.git
+    path = vendor/symfony/symfony/src/Symfony/Component/Console
+    url = https://github.com/symfony/Console.git
 [submodule "vendor/symfony/symfony/src/Symfony/Component/Finder"]
-	path = vendor/symfony/symfony/src/Symfony/Component/Finder
-	url = https://github.com/symfony/Finder.git
+    path = vendor/symfony/symfony/src/Symfony/Component/Finder
+    url = https://github.com/symfony/Finder.git
+[submodule "vendor/symfony/symfony/src/Symfony/Component/ClassLoader"]
+    path = vendor/symfony/symfony/src/Symfony/Component/ClassLoader
+    url = https://github.com/symfony/ClassLoader.git

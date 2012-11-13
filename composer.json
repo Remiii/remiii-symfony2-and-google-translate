@@ -1,0 +1,16 @@
+{
+    "name": "Remiii/symfony2-and-google-translate",
+    "description": "App creating your sf2 translations files via google translate API",
+    "autoload": {
+        "psr-0": { "ApiTranslator": "src/" }
+    },
+    "require": {
+        "remiii/google-translate":"dev-master",
+        "symfony/console": "2.1.*",
+        "symfony/class-loader": "2.1.*",
+        "symfony/finder": "2.1.*",
+        "symfony/yaml": "2.1.*"
+
+    },
+    "minimum-stability": "dev"
+}
