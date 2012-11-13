@@ -1,6 +1,5 @@
 output/*
 datas/*
-vendor/*
 *.swo
 *.swn
 *.swp
