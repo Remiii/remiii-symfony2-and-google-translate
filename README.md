@@ -7,7 +7,7 @@ App creating your sf2 translations files via google translate API.
 Create a datas directory and an output directory
 Put your base yml file in datas directory.<br/>
 <br/>
-Run the program with that command : php src/translate.php --languages = "es, en, it".
+Run the program with that command : php app/console "es, en, it".
 
 <br/>
 This command translates your base yml file in spanish, english and italian.
