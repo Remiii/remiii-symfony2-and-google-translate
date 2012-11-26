@@ -1,0 +1,26 @@
+mess:
+    hello: 'Bonjour le monde'
+    bienvenue: 'Bienvenue sur la Channel'
+title:
+    videos: 'Nos vidéos'
+    your_video: 'Votre Vidéo'
+    function: 'Comment ça marche ?'
+    pub: Pub
+    star_is_you: 'La star cest vous'
+tabs:
+    comments: Commentaires
+    club_videos: 'Vidéos du club'
+    most_seen_videos: 'Vidéos les plues vues'
+    actualite_l1: 'Actualité de la L1 en vidéo'
+    more_videos_club: 'Regarder plus de vidéo de'
+video:
+    proposer: 'Une vidéo proposée par'
+    filmer: 'Cette vidéo à été filmée ici :'
+    keywords: 'Mots clés :'
+    vues: '%nbre% vues'
+class:
+    adresse: Adresse
+    ville: Ville
+    tel: Téléphone
+right:
+    more_videos: 'Plus de vidéos'

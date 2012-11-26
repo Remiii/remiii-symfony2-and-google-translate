@@ -49,8 +49,10 @@ class TranslateCommand extends Command
                 $text = '';
                 $resource = fopen(__DIR__."/../../output/messages.$lang.yml", "w+");
                 foreach($file_toTranslate as $key => $val) {
-                    $traduction = $translator->translate( $lang , utf8_encode($val) ) ;
-                    $text .= "$key: $traduction\n" ;
+                    foreach($val as $string_toTranslate) {
+                        $traduction = $translator->translate( $lang , utf8_encode($string_toTranslate) ) ;
+                        $text .= "$key: $traduction\n" ;
+                    }
                 }
                 fwrite($resource, $text);
                 fclose($resource);
