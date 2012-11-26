@@ -1,5 +1,7 @@
-output/*
-datas/*
+.DS_Store
+*~
+composer.phar
+composer.lock
 vendor/*
 *.swo
 *.swn
