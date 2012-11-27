@@ -79,7 +79,6 @@ class Translator
             $place .= "['$element']";
         endforeach;
         $place = str_replace('[\'\']', '', $place);
-        //print($place."\n");
         eval('$copy_yaml'.$place.' = ($copy_yaml'.$place.'==\'\') ?  \''.str_replace('\'','',$translation[1]).'\' : $copy_yaml'.$place.';');
 
         
