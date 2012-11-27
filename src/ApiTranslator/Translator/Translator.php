@@ -9,16 +9,19 @@ class Translator
 {
     private $key ;
 
+    private $input;
+
     private $output ;
 
     private $file_Translator;
 
     private $lang;
 
-    public function __construct ($key , $translator, $output)
+    public function __construct ($key , $input, $output)
     {
         $this->key = $key ;
-        $this->file_Translator = $translator;
+        $this->file_Translator = __DIR__.'/../../../vendor/remiii/google-translate/bin/t';
+        $this->input = $input;
         $this->output = $output;
     }
 
@@ -34,19 +37,16 @@ class Translator
             if( is_array( $element ) ) {
                 $this->readAndTranslate( $element, $keys, $copy_yaml );
             } else {
-                $this->placeTranslationInYaml($yamlArray, array($keys, $this->translate( $this->getLang(), $element )), $copy_yaml);
+                $this->placeTranslationInYaml($yamlArray, array($keys, $this->translate( $this->getLang(), utf8_encode($element) )), &$copy_yaml);
             }
             $keys = explode(".", $keys);
             array_pop($keys);
             $keys = implode(".", $keys);
         }
-        //if($base) {
-            //$dumper = new Dumper(); 
-            //file_put_contents( $this->output , $dumper->dump($yamlArray, 2));
-
-        //}
 
     }
+
+
 
     public function setLang($lang)
     {
@@ -59,6 +59,18 @@ class Translator
         return $this->lang;
     }
 
+    public function setTranslator($translator)
+    {
+        $this->file_Translator = $translator;    
+        return $this;
+    }
+
+    public function getTranslator()
+    {
+        return $this->file_Translator;
+    }
+
+
     private function placeTranslationInYaml($yamlArray, $translation, &$copy_yaml)
     {
         $tab = explode(".", $translation[0]);
@@ -68,7 +80,7 @@ class Translator
         endforeach;
         $place = str_replace('[\'\']', '', $place);
         //print($place."\n");
-        eval('$copy_yaml'.$place.' = \''.$translation[1].'\';');
+        eval('$copy_yaml'.$place.' = ($copy_yaml'.$place.'==\'\') ?  \''.str_replace('\'','',$translation[1]).'\' : $copy_yaml'.$place.';');
 
         
     }

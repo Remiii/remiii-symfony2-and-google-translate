@@ -11,26 +11,19 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
     public function testinstanceOfTranslator()
     {
         $lang = "fr";
-        $output = __DIR__."/../Fixtures/datas/test.$lang.yml";
-        $translator = new Translator($lang, __DIR__.'/../../vendor/remiii/google-translate/bin/t', $output );
+        $input = __DIR__."/../Fixtures/datas/test.$lang.yml";
+        $output = __DIR__."/../Fixtures/output/test.en.yml";
+        $origin = __DIR__."/../Fixtures/datas/test.en.yml";
+        $translator = new Translator($lang, $input, $output );
         $translator->setLang("en");
-        $yaml = Yaml::parse($output);
+        $yaml = Yaml::parse($input);
         $dumper = new Dumper(); 
         
+        $copy_yaml = Yaml::parse($origin);
         if ( is_array ( $yaml ) ) {
-            $copy_yaml = $yaml;
             $translator->readAndTranslate($yaml, '', $copy_yaml);
-            print_r($copy_yaml);
-        } else {
-        }
-        //$resource = fopen(__DIR__."/../../output/messages.$lang.yml", "w+");
-                //foreach($file_toTranslate as $key => $val) {
-                    //foreach($val as $string_toTranslate) {
-                        //$traduction = $translator->translate( $lang , utf8_encode($string_toTranslate) ) ;
-                        //$text .= "$key: $traduction\n" ;
-                    //}
-                //}
-        
+            file_put_contents( $output , $dumper->dump($copy_yaml, 2));
+        }        
         $this->assertTrue($translator instanceof Translator);
         
     }
