@@ -84,4 +84,16 @@ class Translator
 
         
     }
+
+    static public function eraseValues($yamlArray)
+    {
+        foreach($yamlArray as $key => $val):
+            if(is_array($val)) {
+                $yamlArray[$key] = self::eraseValues($val);
+            } else {
+                $yamlArray[$key] = '';
+            }
+        endforeach;
+        return $yamlArray;
+    }
 }
