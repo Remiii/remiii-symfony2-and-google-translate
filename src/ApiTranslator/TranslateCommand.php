@@ -38,16 +38,15 @@ class TranslateCommand extends Command
     {
 
         $languages=  explode( "," , $input->getArgument('languages') ) ;
-        
+
         $finder = new Finder() ;
         $finder->files()->in(__DIR__."/../../datas/") ;
 
-
-        
         $output_path = __DIR__."/../../output/";
         $datas_path   = __DIR__."/../../datas/";
 
         $key = $input->getArgument('base_language');
+        copy ( $datas_path . "messages.$key.yml" , $output_path . "messages.$key.yml" ) ;
         $input = $datas_path."messages.$key.yml";
         foreach ( $languages as $lang ) {
             $lang = trim($lang); 

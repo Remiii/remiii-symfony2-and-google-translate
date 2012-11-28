@@ -30,3 +30,5 @@ $ php app/console translator "[yourlanguage]" "es, en, it"
 ```
 This command translates your base yml file in spanish, english and italian. File will be created in output directory.<br />That's it !
 
+Marks: think to escpae quote in a string ("'" => "\'").
+
