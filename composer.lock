@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ae8448be6aa5e5b179301d51f294660e",
+    "hash": "17084d209cb14d7246abf054249f9898",
     "packages": [
         {
             "name": "comensee/php-google-translate",
@@ -129,25 +129,6 @@
                 "web service"
             ],
             "time": "2013-08-07 03:07:47"
-        },
-        {
-            "name": "remiii/google-translate",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Remiii/google-translate.git",
-                "reference": "6661350972ca34d02893302aa39f6c68104d75d5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Remiii/google-translate/zipball/6661350972ca34d02893302aa39f6c68104d75d5",
-                "reference": "6661350972ca34d02893302aa39f6c68104d75d5",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Google Translate API calls in ruby",
-            "time": "2012-11-27 09:48:28"
         },
         {
             "name": "symfony/class-loader",
@@ -383,7 +364,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "remiii/google-translate": 20,
         "comensee/php-google-translate": 20
     },
     "platform": [
