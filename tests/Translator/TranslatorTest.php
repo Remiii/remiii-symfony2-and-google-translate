@@ -25,9 +25,9 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
             file_put_contents( $output , $dumper->dump( $copy_yaml, 2 ) ) ;
         } else {
             $copy_yaml = $yaml ;
-            $test = Translator::eraseValues( $copy_yaml ) ;
-            $translator->readAndTranslate( $yaml, '', $copy_yaml ) ;
-            file_put_contents( $output , $dumper->dump($copy_yaml, 2 ) ) ;
+            $test = $translator->eraseValues( $copy_yaml ) ;
+            $translator->readAndTranslate( $yaml, '', $test ) ;
+            file_put_contents( $output , $dumper->dump($test, 2 ) ) ;
         }    
         $this->assertTrue($translator instanceof Translator ) ;
         
@@ -35,7 +35,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
     public function testOutputIntegrity()
     {
-        $output = __DIR__ . "/../Fixtures/output/test.de.yml" ;
+        $output = __DIR__ . "/../Fixtures/output/test.en.yml" ;
         $yaml_output = Yaml::parse( $output ) ;
         $this->assertTrue( in_array ( 'title' , array_keys( $yaml_output ) ) ) ;
         $this->assertNotEquals( 5, count( array_keys( $yaml_output ) ) ) ;

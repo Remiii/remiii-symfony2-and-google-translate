@@ -1,0 +1,26 @@
+mess:
+    hello: 'Hello World'
+    bienvenue: 'Welcome to the Channel'
+title:
+    videos: 'our videos'
+    your_video: 'your Video'
+    function: 'How does it work ?'
+    pub: ''
+    star_is_you: 'The star is you'
+tabs:
+    comments: comments
+    club_videos: 'Videos Club'
+    most_seen_videos: 'Most Viewed Videos'
+    actualite_l1: 'News of the L1 video'
+    more_videos_club: 'Watch more video'
+video:
+    proposer: 'A proposed video'
+    filmer: 'This video was filmed here:'
+    keywords: 'Keywords :'
+    vues: '% No.% views'
+class:
+    adresse: address
+    ville: city
+    tel: phone
+right:
+    more_videos: 'More videos'
