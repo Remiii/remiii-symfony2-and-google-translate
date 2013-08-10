@@ -5,6 +5,7 @@ use ApiTranslator\Translator\Translator;
 
 use Symfony\Component\Yaml\Yaml;
 
+use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Finder\Finder;
 
 use Symfony\Component\Console\Command\Command;
@@ -21,9 +22,14 @@ class TranslateCommand extends Command
             ->setName('translator')
             ->setDescription('Translator command using google API')
             ->addArgument(
+                'base_language',
+                InputArgument::REQUIRED,
+                'the base language used for translation'
+                )
+            ->addArgument(
                 'languages',
                 InputArgument::REQUIRED,
-                'languages that you want translate your yml in.'
+                "languages that you want translate your yml in. \n Ex : \"es, fr, it\""
                 )
         ; 
     }
@@ -32,31 +38,37 @@ class TranslateCommand extends Command
     {
 
         $languages=  explode( "," , $input->getArgument('languages') ) ;
-        
+
         $finder = new Finder() ;
         $finder->files()->in(__DIR__."/../../datas/") ;
 
-        foreach ( $finder as $file ) { 
-            $path = $file->getRealpath();
-            $file_toTranslate = Yaml::parse($path) ;
-            $tab = explode(".", $path);
-            array_pop($tab);
-            $key = end($tab);
-            $translator = new Translator(trim($key), __DIR__.'/../../vendor/remiii/google-translate/bin/t' ) ;
+        $output_path = __DIR__."/../../output/";
+        $datas_path   = __DIR__."/../../datas/";
 
-            foreach($languages as $lang) {
-                $lang = trim($lang);
-                $text = '';
-                $resource = fopen(__DIR__."/../../output/messages.$lang.yml", "w+");
-                foreach($file_toTranslate as $key => $val) {
-                    $traduction = $translator->translate( $lang , utf8_encode($val) ) ;
-                    $text .= "$key: $traduction\n" ;
-                }
-                fwrite($resource, $text);
-                fclose($resource);
-                }
+        $key = $input->getArgument('base_language');
+        copy ( $datas_path . "messages.$key.yml" , $output_path . "messages.$key.yml" ) ;
+        $input = $datas_path."messages.$key.yml";
+        foreach ( $languages as $lang ) {
+            $lang = trim($lang); 
+            $output = $output_path."messages.$lang.yml";
+            $origin = $datas_path."messages.$lang.yml";
+            $translator = new Translator($key, $input, $output );
+            $translator->setLang($lang);
+            $yaml = Yaml::parse($input);
+            $dumper = new Dumper(); 
+        
+            $copy_yaml =  Yaml::parse($origin) ;
+            if ( is_array ( $copy_yaml ) ) {
+                $translator->readAndTranslate( $yaml, '', $copy_yaml ) ;
+                file_put_contents( $output , $dumper->dump( $copy_yaml, 2 ) ) ;
+            } else {
+                $copy_yaml = $yaml ;
+                $test = Translator::eraseValues( $copy_yaml ) ;
+                $translator->readAndTranslate( $yaml, '', $test ) ;
+                file_put_contents( $output , $dumper->dump($test, 2 ) ) ;
             }
         }
+    }
 
 
 }
