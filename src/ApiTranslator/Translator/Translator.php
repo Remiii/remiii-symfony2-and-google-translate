@@ -4,10 +4,11 @@ namespace ApiTranslator\Translator;
 
 
 use Symfony\Component\Yaml\Dumper;
+use Google\Translate\GoogleTranslate;
 
 class Translator
 {
-    private $key ;
+    private $fromLanguage ;
 
     private $input;
 
@@ -17,17 +18,17 @@ class Translator
 
     private $lang;
 
-    public function __construct ($key , $input, $output)
+    public function __construct ($fromLanguage , $input, $output)
     {
-        $this->key = $key ;
-        $this->file_Translator = __DIR__.'/../../../vendor/remiii/google-translate/bin/t';
+        $this->fromLanguage = $fromLanguage ;
+        $this->translator = new GoogleTranslate();
         $this->input = $input;
         $this->output = $output;
     }
 
     public function translate( $lang, $message )
     {
-        return exec("$this->file_Translator $this->key:$lang ".utf8_decode($message) ) ;
+        return $this->translator->translate($this->fromLanguage, $lang, utf8_decode($message) )[0] ;
     }
 
     public function readAndTranslate($yamlArray, $keys = "", &$copy_yaml)
@@ -37,7 +38,7 @@ class Translator
             if( is_array( $element ) ) {
                 $this->readAndTranslate( $element, $keys, $copy_yaml );
             } else {
-                $this->placeTranslationInYaml($yamlArray, array($keys, $this->translate( $this->getLang(), utf8_encode($element) )), &$copy_yaml);
+                $this->placeTranslationInYaml($yamlArray, array($keys, $this->translate( $this->getLang(), utf8_encode($element) )), $copy_yaml);
             }
             $keys = explode(".", $keys);
             array_pop($keys);

@@ -2,11 +2,6 @@
 
 App creating your sf2 translations files via google translate API.<br />
 
-## Requirements
-
-* Ruby
-* RubyGems
-
 ## How to use
 
 Get Composer.
@@ -14,12 +9,6 @@ Get Composer.
 Get vendors:
 ```bash
 $ php composer.phar install
-```
-
-Install gem ruby google-translate:
-```bash
-$ cd vendor/remiii/google-translate
-$ gem install google-translate
 ```
 
 Put your base messages.[yourlanguage].yml file in datas directory.<br/>
