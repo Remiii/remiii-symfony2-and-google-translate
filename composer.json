@@ -1,7 +1,7 @@
 {
-    "name": "Remiii/symfony2-and-google-translate",
+    "name": "remiii/symfony2-and-google-translate",
     "description": "App creating your sf2 translations files via google translate API",
-    "keywords": ["symfony2", "translate", "google"]
+    "keywords": ["symfony2", "translate", "google"],
     "autoload": {
         "psr-0": { "ApiTranslator": "src/" }
     },
